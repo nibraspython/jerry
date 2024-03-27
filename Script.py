@@ -7,7 +7,7 @@ I Cᴀɴ Pʀᴏᴠɪᴅᴇ Mᴏᴠɪᴇ Fᴏʀ Yᴏᴜ Jᴜsᴛ Aᴅᴅ Mᴇ Iɴ
     
     HELP_TXT = "Hᴇʏ {}\nHᴇʀᴇ Mꜱ Mʏ Hᴇʟᴩ"
 
-    ABOUT_TXT = """<b> Mʏ Nᴀᴍᴇ: {}
+    ABOUT_TXT = """<b> Mʏ Nᴀᴍᴇ: {bot}
     
 👦🏼 Cʀᴇᴀᴛᴏʀ: <a href='https://t.me/xax_ha_ha_l'>𝙾𝙶𝙶𝚈 𝚇 𝙹𝙴𝚁𝚁𝚈</a>
 
@@ -18,3 +18,15 @@ I Cᴀɴ Pʀᴏᴠɪᴅᴇ Mᴏᴠɪᴇ Fᴏʀ Yᴏᴜ Jᴜsᴛ Aᴅᴅ Mᴇ Iɴ
 - ꜱᴏᴜʀᴄᴇ - <a href="https://t.me/xax_ha_ha_l">Pᴍ Mᴇ 📩</a>
 ⚙️ Dᴇᴠᴇʟᴏᴘᴇʀ:
 - <a href="https://t.me/xax_ha_ha_l">𝙾𝙶𝙶𝚈 𝚇 𝙹𝙴𝚁𝚁𝚈</a></b>"""
+    
+    HELPX_TXT = """Hai {},
+**There Is Nothing To Know More.**
+- Send Me The Limit Of Your Password and Keys (optional)
+  Like :-
+    `10 abcd1234`
+    `10`
+- I Will Give The Password Of That Limit.
+**Note :-**
+• Only Digits Are Allowed
+• Maximum Allowed Digits Till 100 (I Can't Generate Passwords Above The Length 84)"""
+   
