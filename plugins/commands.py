@@ -1,3 +1,4 @@
+from Script import script
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram import Client, filters, enums
 from info import PICS
@@ -7,7 +8,7 @@ CMD = ["/", "."]
 
 @Client.on_message(filters.command("start"))
 async def start(client, message):
-    await message.reply_photo(photo=random.choice(PICS), caption=ABOUT, reply_markup=BUTTONS, disable_web_page_preview=True, quote=True)
+    await message.reply_photo(photo=random.choice(PICS), caption=script.TEXT_TXT.format(user=message.from_user.mention, bot=client.mention), reply_markup=BUTTONS, quote=True)
 
 TEXT = """**Hai {},
 I Am Password Generator Bot. I Can Generate Strong Passwords At Your Wish Length (Max. 84).**
@@ -67,9 +68,9 @@ async def help(_, message):
                     InlineKeyboardButton('🌐 Aʙᴏᴜᴛ', callback_data="about"),
                     InlineKeyboardButton('⚙️ Dᴏɴᴀᴛᴇ', url='https://t.me/xax_ha_ha_l')
                 ],[
-                    InlineKeyboardButton('🕸️ Hᴇʟᴩ', callback_data="help")
+                    InlineKeyboardButton('🕸️ Hᴇʟᴩ', callback_data="start")
                   ]]
         m = await message.reply_sticker("CAACAgIAAxkBAAIve2XgRl5w5qGTeAjktaUi00daPTyLAAIGMAACER1xSFRMh-rQSCkpNAQ") 
         await asyncio.sleep(2)
-        await message.reply_photo(photo=random.choice(PICS), caption=HELP.format(bot=client.mention), reply_markup=InlineKeyboardMarkup(buttons), quote=True)
+        await message.reply_photo(photo=random.choice(PICS), caption=script.ABOUT_TXT.format(bot=client.mention), reply_markup=InlineKeyboardMarkup(buttons), quote=True)
         return await m.delete()
