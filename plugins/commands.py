@@ -13,8 +13,13 @@ Mʏ Nᴀᴍᴇ Is {}.
 I Cᴀɴ Pʀᴏᴠɪᴅᴇ Mᴏᴠɪᴇ Fᴏʀ Yᴏᴜ Jᴜsᴛ Aᴅᴅ Mᴇ Iɴ Yᴏᴜʀ Gʀᴏᴜᴘ Oʀ Jᴏɪɴ Oᴜʀ Gʀᴏᴜᴘ 🫶🏻🤍</b>"""
     
 @Client.on_message(filters.command("start"))
-async def start(client, update):
-    await update.reply_photo(photo=random.choice(PICS), caption=TEXT_TXT.format(update.from_user.mention), reply_markup=BUTTONS, quote=True)
+async def start(bot, update):
+    await update.reply_text(
+        text=TEXT.format(update.from_user.mention),
+        reply_markup=BUTTONS,
+        disable_web_page_preview=True,
+        quote=True
+    )
 
 TEXT = """**Hai {},
 I Am Password Generator Bot. I Can Generate Strong Passwords At Your Wish Length (Max. 84).**
