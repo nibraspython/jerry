@@ -7,7 +7,7 @@ CMD = ["/", "."]
 
 @Client.on_message(filters.command("start"))
 async def start(client, message):
-    await message.reply_photo(photo=random.choice(PICS), caption=ABOUT, reply_markup=InlineKeyboardMarkup(BUTTONS), parse_mode=enums.ParseMode.HTML
+    await message.reply_photo(photo=random.choice(PICS), caption=ABOUT, reply_markup=InlineKeyboardMarkup(BUTTONS), parse_mode=enums.ParseMode.HTML)
 
 TEXT = """**Hai {},
 I Am Password Generator Bot. I Can Generate Strong Passwords At Your Wish Length (Max. 84).**
