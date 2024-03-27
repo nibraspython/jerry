@@ -7,11 +7,7 @@ CMD = ["/", "."]
 
 @Client.on_message(filters.command("start"))
 async def start(client, message):
-    o = await message.reply("𝗟𝗼𝗮𝗱𝗶𝗻𝗴..")
-    await asyncio.sleep(1)
-    o = await o.edit("𝗟𝗼𝗮𝗱𝗶𝗻𝗴...")
-    await asyncio.sleep(1)
-    o = await o.edit("𝘏𝘦𝘺 𝘋𝘶𝘥𝘦 😎,\n\n𝘐 𝘢𝘮 𝘩𝘦𝘳𝘦 𝘵𝘰 𝘩𝘦𝘭𝘱 𝘺𝘰𝘶 🙂")
+    await message.reply_photo(photo=random.choice(PICS), caption=ABOUT, reply_markup=InlineKeyboardMarkup(BUTTONS), parse_mode=enums.ParseMode.HTML
 
 TEXT = """**Hai {},
 I Am Password Generator Bot. I Can Generate Strong Passwords At Your Wish Length (Max. 84).**
@@ -75,5 +71,5 @@ async def help(_, message):
                   ]]
         m = await message.reply_sticker("CAACAgIAAxkBAAIve2XgRl5w5qGTeAjktaUi00daPTyLAAIGMAACER1xSFRMh-rQSCkpNAQ") 
         await asyncio.sleep(2)
-        await message.reply_photo(photo=random.choice(PICS), caption=START_MESSAGE.format(user=message.from_user.mention, bot=client.mention), reply_markup=InlineKeyboardMarkup(buttons), parse_mode=enums.ParseMode.HTML)
+        await message.reply_photo(photo=random.choice(PICS), caption=HELP, reply_markup=InlineKeyboardMarkup(buttons), parse_mode=enums.ParseMode.HTML)
         return await m.delete()
