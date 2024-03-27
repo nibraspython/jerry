@@ -60,9 +60,8 @@ ABOUT = """--**About Me**--
 **🛡️ Framework :** Pyrogram"""
 
 
-@Client.on_message(filters.command('start'))
+@Client.on_message(filters.command('help'))
 async def start(client, message):
-if len(message.command) != 2:
         buttons = [[
                     InlineKeyboardButton('⛦ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ⛦', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
                 ],[
