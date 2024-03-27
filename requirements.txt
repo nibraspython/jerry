@@ -1,2 +1,6 @@
-pyrogram
+aiohttp
+pyrofork
+python-dotenv
+pytz
+requests
 tgcrypto
