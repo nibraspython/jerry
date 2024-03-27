@@ -1,14 +1,14 @@
-import random, os
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+import asyncio
 
-
-Bot = Client(
-    "Password Generator Bot",
-    bot_token=os.environ.get("BOT_TOKEN"),
-    api_id=int(os.environ.get("API_ID")),
-    api_hash=os.environ.get("API_HASH")
-)
+@Client.on_message(filters.command("start"))
+async def start(client, message):
+    o = await message.reply("𝗟𝗼𝗮𝗱𝗶𝗻𝗴..")
+    await asyncio.sleep(1)
+    o = await o.edit("𝗟𝗼𝗮𝗱𝗶𝗻𝗴...")
+    await asyncio.sleep(1)
+    o = await o.edit("𝘏𝘦𝘺 𝘋𝘶𝘥𝘦 😎,\n\n𝘐 𝘢𝘮 𝘩𝘦𝘳𝘦 𝘵𝘰 𝘩𝘦𝘭𝘱 𝘺𝘰𝘶 🙂")
 
 TEXT = """**Hai {},
 I Am Password Generator Bot. I Can Generate Strong Passwords At Your Wish Length (Max. 84).**
@@ -60,30 +60,18 @@ ABOUT = """--**About Me**--
 **🛡️ Framework :** Pyrogram"""
 
 
-@Bot.on_message(filters.private & filters.command(["start"]))
-async def start(bot, update):
-    await update.reply_text(
-        text=TEXT.format(update.from_user.mention),
-        reply_markup=BUTTONS,
-        disable_web_page_preview=True,
-        quote=True
-    )
-
-
-@Bot.on_message(filters.private & filters.command(["help"]))
-async def help(bot, update):
-    await update.reply_text(
-        text=HELP.format(update.from_user.mention),
-        reply_markup=HELP_BUTTON,
-        disable_web_page_preview=True,
-        quote=True
-    )
-
-
-@Bot.on_message(filters.private & filters.command(["about", "source", "repo"]))
-async def about(bot, update):
-    await update.reply_text(
-        text=ABOUT,
-        disable_web_page_preview=True,
-        quote=True
-    )
+@Client.on_message(filters.command('start'))
+async def start(client, message):
+if len(message.command) != 2:
+        buttons = [[
+                    InlineKeyboardButton('⛦ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ⛦', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+                ],[
+                    InlineKeyboardButton('🌐 Aʙᴏᴜᴛ', callback_data="about"),
+                    InlineKeyboardButton('⚙️ Dᴏɴᴀᴛᴇ', url='https://t.me/xax_ha_ha_l')
+                ],[
+                    InlineKeyboardButton('🕸️ Hᴇʟᴩ', callback_data="help")
+                  ]]
+        m = await message.reply_sticker("CAACAgIAAxkBAAIve2XgRl5w5qGTeAjktaUi00daPTyLAAIGMAACER1xSFRMh-rQSCkpNAQ") 
+        await asyncio.sleep(2)
+        await message.reply_photo(photo=random.choice(PICS), caption=START_MESSAGE.format(user=message.from_user.mention, bot=client.mention), reply_markup=InlineKeyboardMarkup(buttons), parse_mode=enums.ParseMode.HTML)
+        return await m.delete()
