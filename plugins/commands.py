@@ -1,5 +1,6 @@
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram import Client, filters
+from info import PICS
 import asyncio
 
 @Client.on_message(filters.command("start"))
@@ -60,8 +61,8 @@ ABOUT = """--**About Me**--
 **🛡️ Framework :** Pyrogram"""
 
 
-@Client.on_message(filters.command('help'))
-async def start(client, message):
+@Client.on_message(filters.command("help", CMD))
+async def help(_, message):
         buttons = [[
                     InlineKeyboardButton('⛦ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ⛦', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
                 ],[
