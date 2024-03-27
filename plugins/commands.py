@@ -3,6 +3,8 @@ from pyrogram import Client, filters
 from info import PICS
 import asyncio
 
+CMD = ["/", "."]
+
 @Client.on_message(filters.command("start"))
 async def start(client, message):
     o = await message.reply("𝗟𝗼𝗮𝗱𝗶𝗻𝗴..")
