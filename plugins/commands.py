@@ -87,7 +87,7 @@ async def help(_, message):
         return await m.delete()
    
 if query.data.startswith("file"):
-await update.reply_text(
+    await message.reply_text(
         text=TEXT,
         reply_markup=BUTTONS,
         disable_web_page_preview=True,
