@@ -87,9 +87,8 @@ async def help(_, message):
         return await m.delete()
    
 if query.data.startswith("file"):
-async def file(bot, update):
-    await update.reply_text(
-        text=TEXT.format(update.from_user.mention),
+await update.reply_text(
+        text=TEXT,
         reply_markup=BUTTONS,
         disable_web_page_preview=True,
         quote=True
