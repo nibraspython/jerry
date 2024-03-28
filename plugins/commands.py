@@ -77,7 +77,7 @@ async def help(_, message):
                     InlineKeyboardButton('⛦ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ⛦', url=f'http://t.me/oggyRbot?startgroup=true')
                 ],[
                     InlineKeyboardButton('⚙️ ꜰᴜɴᴛɪᴏɴ ⚙️', callback_data="/start"),
-                    InlineKeyboardButton('🧭 ᴀʙᴏᴜᴛ 🧭', url='https://t.me/xax_ha_ha_l')
+                    InlineKeyboardButton('🧭 ᴀʙᴏᴜᴛ 🧭', callback_data="stick")
                 ],[
                     InlineKeyboardButton('🕸️ Hᴇʟᴩ', callback_data="start")
                   ]]
@@ -85,14 +85,25 @@ async def help(_, message):
         await asyncio.sleep(2)
         await message.reply_photo(photo=random.choice(PICS), caption=script.ABOUT_TXT, reply_markup=InlineKeyboardMarkup(buttons), quote=True)
         return await m.delete()
-   
-if query.data.startswith("file"):
-    await message.reply_text(
-        text=TEXT,
+
+@Client.on_message(filters.command("start"))
+async def start(bot, update):
+    await update.reply_text(
+        text=TEXT.format(update.from_user.mention),
         reply_markup=BUTTONS,
         disable_web_page_preview=True,
         quote=True
     )
 
-
-
+if query.data.startswith("file"):
+        await query.message.edit("**Select A Type**", reply_markup=InlineKeyboardMarkup(buttons))
+elif query.data == "stick":
+        buttons = [[
+            InlineKeyboardButton(text="𝖭𝗈𝗋𝗆𝖺𝗅", callback_data="stkr"),
+            InlineKeyboardButton(text="𝖤𝖽𝗀𝖾 𝖢𝗎𝗋𝗏𝖾𝖽", callback_data="cur_ved"),
+            ],[                    
+            InlineKeyboardButton(text="𝖢𝗂𝗋𝖼𝗅𝖾", callback_data="circle_sticker")
+            ],[
+            InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='photo')
+        ]]              
+        await query.message.edit("**Select A Type**", reply_markup=InlineKeyboardMarkup(buttons))
