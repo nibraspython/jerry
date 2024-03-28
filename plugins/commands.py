@@ -90,14 +90,3 @@ async def pm_text(bot, message):
         chat_id=LOG_CHANNEL,
         text=f"<b>#𝐏𝐌_𝐌𝐒𝐆\n\nNᴀᴍᴇ : {user}\n\nID : {user_id}\n\nMᴇssᴀɢᴇ : {content}</b>"
     )
-    
-    elif query.data == "stick":
-        buttons = [[
-            InlineKeyboardButton(text="𝖭𝗈𝗋𝗆𝖺𝗅", callback_data="stkr"),
-            InlineKeyboardButton(text="𝖤𝖽𝗀𝖾 𝖢𝗎𝗋𝗏𝖾𝖽", callback_data="cur_ved"),
-            ],[                    
-            InlineKeyboardButton(text="𝖢𝗂𝗋𝖼𝗅𝖾", callback_data="circle_sticker")
-            ],[
-            InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='photo')
-        ]]              
-    await query.message.edit("**Select A Type**", reply_markup=InlineKeyboardMarkup(buttons))
