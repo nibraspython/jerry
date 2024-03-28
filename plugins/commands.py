@@ -70,7 +70,7 @@ async def help(_, message):
                     InlineKeyboardButton('⚙️ ꜰᴜɴᴛɪᴏɴ ⚙️', callback_data="/start"),
                     InlineKeyboardButton('🧭 ᴀʙᴏᴜᴛ 🧭', callback_data="stick")
                 ],[
-                    InlineKeyboardButton('🕸️ Hᴇʟᴩ', callback_data="start")
+                    InlineKeyboardButton('🕸️ Hᴇʟᴩ', callback_data="file")
                   ]]
         m = await message.reply_sticker("CAACAgIAAxkBAAIve2XgRl5w5qGTeAjktaUi00daPTyLAAIGMAACER1xSFRMh-rQSCkpNAQ") 
         await asyncio.sleep(2)
@@ -86,7 +86,7 @@ async def start(bot, update):
         quote=True
     )
 
-if query.data.startswith("file"):
+if query.data == "file":
         buttons = [[
             InlineKeyboardButton(text="𝖭𝗈𝗋𝗆𝖺𝗅", callback_data="stkr"),
             InlineKeyboardButton(text="𝖤𝖽𝗀𝖾 𝖢𝗎𝗋𝗏𝖾𝖽", callback_data="cur_ved"),
@@ -95,7 +95,7 @@ if query.data.startswith("file"):
             ],[
             InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='photo')
         ]]              
-        await query.message.edit("**Select A Type**", reply_markup=InlineKeyboardMarkup(buttons))
+        await query.message.edit("**Select A 5 Type**", reply_markup=InlineKeyboardMarkup(buttons))
 
 elif query.data == "stick":
         buttons = [[
