@@ -11,15 +11,6 @@ TEXT_TXT = """<b> Hᴇʟʟᴏ {}.
 Mʏ Nᴀᴍᴇ Is {}.
 
 I Cᴀɴ Pʀᴏᴠɪᴅᴇ Mᴏᴠɪᴇ Fᴏʀ Yᴏᴜ Jᴜsᴛ Aᴅᴅ Mᴇ Iɴ Yᴏᴜʀ Gʀᴏᴜᴘ Oʀ Jᴏɪɴ Oᴜʀ Gʀᴏᴜᴘ 🫶🏻🤍</b>"""
-    
-@Client.on_message(filters.command("start"))
-async def start(bot, update):
-    await update.reply_text(
-        text=TEXT.format(update.from_user.mention),
-        reply_markup=BUTTONS,
-        disable_web_page_preview=True,
-        quote=True
-    )
 
 TEXT = """**Hai {},
 I Am Password Generator Bot. I Can Generate Strong Passwords At Your Wish Length (Max. 84).**
@@ -96,7 +87,16 @@ async def start(bot, update):
     )
 
 if query.data.startswith("file"):
+        buttons = [[
+            InlineKeyboardButton(text="𝖭𝗈𝗋𝗆𝖺𝗅", callback_data="stkr"),
+            InlineKeyboardButton(text="𝖤𝖽𝗀𝖾 𝖢𝗎𝗋𝗏𝖾𝖽", callback_data="cur_ved"),
+            ],[                    
+            InlineKeyboardButton(text="𝖢𝗂𝗋𝖼𝗅𝖾", callback_data="circle_sticker")
+            ],[
+            InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='photo')
+        ]]              
         await query.message.edit("**Select A Type**", reply_markup=InlineKeyboardMarkup(buttons))
+
 elif query.data == "stick":
         buttons = [[
             InlineKeyboardButton(text="𝖭𝗈𝗋𝗆𝖺𝗅", callback_data="stkr"),
