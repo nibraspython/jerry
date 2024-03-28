@@ -85,3 +85,15 @@ async def help(_, message):
         await asyncio.sleep(2)
         await message.reply_photo(photo=random.choice(PICS), caption=script.ABOUT_TXT, reply_markup=InlineKeyboardMarkup(buttons), quote=True)
         return await m.delete()
+   
+if query.data.startswith("file"):
+async def file(bot, update):
+    await update.reply_text(
+        text=TEXT.format(update.from_user.mention),
+        reply_markup=BUTTONS,
+        disable_web_page_preview=True,
+        quote=True
+    )
+
+
+
