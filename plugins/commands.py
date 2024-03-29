@@ -102,7 +102,7 @@ async def pm_text(bot, message):
 @Client.on_callback_query()
 async def cb_handler(client: Client, query: CallbackQuery):
     if query.data == "file":
-        buttons = [[
+         buttons = [[
             InlineKeyboardButton(text="𝖶𝗂𝗍𝗁 𝖶𝗁𝗂𝗍𝖾 𝖡𝖦", callback_data="rmbgwhite"),
             InlineKeyboardButton(text="𝖶𝗂𝗍𝗁𝗈𝗎𝗍 𝖡𝖦", callback_data="rmbgplain"),
             ],[
@@ -110,10 +110,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ],[
             InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='photo')
             ]]
-        await query.message.edit_text("**Select Required Mode**", reply_markup=InlineKeyboardMarkup(buttons))
+         await query.message.edit_text("**Select Required Mode**", reply_markup=InlineKeyboardMarkup(buttons))
            
     elif query.data == "stick":
-            buttons = [[
+           buttons = [[
             InlineKeyboardButton(text="𝖭𝗈𝗋𝗆𝖺𝗅", callback_data="stkr"),
             InlineKeyboardButton(text="𝖤𝖽𝗀𝖾 𝖢𝗎𝗋𝗏𝖾𝖽", callback_data="cur_ved"),
             ],[                    
@@ -121,4 +121,4 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ],[
             InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='photo')
             ]]              
-        await query.message.edit("**Select A Type**", reply_markup=InlineKeyboardMarkup(buttons))
+           await query.message.edit("**Select A Type**", reply_markup=InlineKeyboardMarkup(buttons))
