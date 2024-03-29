@@ -1,7 +1,7 @@
 from Script import script
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 from pyrogram import Client, filters, enums
-from info import PICS, LOG_CHANNEL
+from info import PICS, LOG_CHANNEL, MSG_ALRT
 import os, random, asyncio
 import time
 
@@ -132,7 +132,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton('🕸️ Hᴇʟᴩ', callback_data="file")
                   ]]
          await query.message.edit_text("**Select Required Mode**", reply_markup=InlineKeyboardMarkup(buttons))
-           
+         await query.answer(MSG_ALRT) 
     elif query.data == "helpp":
            buttons = [[
             InlineKeyboardButton(text="🫂", callback_data="stkr"),
