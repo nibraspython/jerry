@@ -85,6 +85,7 @@ async def start(_, message):
         await asyncio.sleep(2)
         await message.reply_photo(photo=random.choice(PICS), caption=script.ABOUT_TXT, reply_markup=InlineKeyboardMarkup(buttons), quote=True)
         return await m.delete()
+        return await query.answer(MSG_ALRT)
 
 @Client.on_message(filters.private & filters.text & filters.incoming)
 async def pm_text(bot, message):
@@ -132,7 +133,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton('🕸️ Hᴇʟᴩ', callback_data="file")
                   ]]
          await query.message.edit_text("**Select Required Mode**", reply_markup=InlineKeyboardMarkup(buttons))
-         await query.answer(MSG_ALRT) 
+         return await query.answer(MSG_ALRT)
     elif query.data == "helpp":
            buttons = [[
             InlineKeyboardButton(text="🫂", callback_data="stkr"),
@@ -143,4 +144,5 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start')
             ]]              
            await query.message.edit("**Select A Type**", reply_markup=InlineKeyboardMarkup(buttons))
+           return await query.answer(MSG_ALRT) 
 
