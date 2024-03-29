@@ -103,10 +103,10 @@ async def pm_text(bot, message):
 async def cb_handler(client: Client, query: CallbackQuery):
     if query.data == "file":
          buttons = [[
-            InlineKeyboardButton(text="𝖶𝗂𝗍𝗁 𝖶𝗁𝗂𝗍𝖾 𝖡𝖦", callback_data="rmbgwhite"),
-            InlineKeyboardButton(text="𝖶𝗂𝗍𝗁𝗈𝗎𝗍 𝖡𝖦", callback_data="rmbgplain"),
+            InlineKeyboardButton(text="👇🏻", callback_data="rmbgwhite"),
+            InlineKeyboardButton(text="👋🏻", callback_data="rmbgplain"),
             ],[
-            InlineKeyboardButton(text="𝖲𝗍𝗂𝖼𝗄𝖾𝗋", callback_data="rmbgsticker"),
+            InlineKeyboardButton(text="❗️", callback_data="rmbgsticker"),
             ],[
             InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start')
             ]]
@@ -114,11 +114,33 @@ async def cb_handler(client: Client, query: CallbackQuery):
            
     elif query.data == "stick":
            buttons = [[
-            InlineKeyboardButton(text="𝖭𝗈𝗋𝗆𝖺𝗅", callback_data="stkr"),
-            InlineKeyboardButton(text="𝖤𝖽𝗀𝖾 𝖢𝗎𝗋𝗏𝖾𝖽", callback_data="cur_ved"),
+            InlineKeyboardButton(text="👨🏼‍🦯", callback_data="stkr"),
+            InlineKeyboardButton(text="😳", callback_data="cur_ved"),
             ],[                    
-            InlineKeyboardButton(text="𝖢𝗂𝗋𝖼𝗅𝖾", callback_data="help")
+            InlineKeyboardButton(text="👀", callback_data="help")
             ],[
             InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start')
             ]]              
            await query.message.edit("**Select A Type**", reply_markup=InlineKeyboardMarkup(buttons))
+    if query.data == "start":
+         buttons = [[
+                    InlineKeyboardButton('⛦ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ⛦', url=f'http://t.me/oggyRbot?startgroup=true')
+                ],[
+                    InlineKeyboardButton('⚙️ ꜰᴜɴᴛɪᴏɴ ⚙️', callback_data="helpp"),
+                    InlineKeyboardButton('🧭 ᴀʙᴏᴜᴛ 🧭', callback_data="stick")
+                ],[
+                    InlineKeyboardButton('🕸️ Hᴇʟᴩ', callback_data="file")
+                  ]]
+         await query.message.edit_text("**Select Required Mode**", reply_markup=InlineKeyboardMarkup(buttons))
+           
+    elif query.data == "helpp":
+           buttons = [[
+            InlineKeyboardButton(text="🫂", callback_data="stkr"),
+            InlineKeyboardButton(text="😅", callback_data="cur_ved"),
+            ],[                    
+            InlineKeyboardButton(text="😌", callback_data="help")
+            ],[
+            InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start')
+            ]]              
+           await query.message.edit("**Select A Type**", reply_markup=InlineKeyboardMarkup(buttons))
+
