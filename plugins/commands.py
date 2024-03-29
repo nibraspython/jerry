@@ -71,12 +71,12 @@ ABOUT = """--**About Me**--
 **🛡️ Framework :** Pyrogram"""
 
 
-@Client.on_message(filters.command("help", CMD))
-async def help(_, message):
+@Client.on_message(filters.command("start", CMD))
+async def start(_, message):
         buttons = [[
                     InlineKeyboardButton('⛦ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ⛦', url=f'http://t.me/oggyRbot?startgroup=true')
                 ],[
-                    InlineKeyboardButton('⚙️ ꜰᴜɴᴛɪᴏɴ ⚙️', callback_data="/start"),
+                    InlineKeyboardButton('⚙️ ꜰᴜɴᴛɪᴏɴ ⚙️', callback_data="helpp"),
                     InlineKeyboardButton('🧭 ᴀʙᴏᴜᴛ 🧭', callback_data="stick")
                 ],[
                     InlineKeyboardButton('🕸️ Hᴇʟᴩ', callback_data="file")
@@ -108,7 +108,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ],[
             InlineKeyboardButton(text="𝖲𝗍𝗂𝖼𝗄𝖾𝗋", callback_data="rmbgsticker"),
             ],[
-            InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='photo')
+            InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start')
             ]]
          await query.message.edit_text("**Select Required Mode**", reply_markup=InlineKeyboardMarkup(buttons))
            
@@ -117,8 +117,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton(text="𝖭𝗈𝗋𝗆𝖺𝗅", callback_data="stkr"),
             InlineKeyboardButton(text="𝖤𝖽𝗀𝖾 𝖢𝗎𝗋𝗏𝖾𝖽", callback_data="cur_ved"),
             ],[                    
-            InlineKeyboardButton(text="𝖢𝗂𝗋𝖼𝗅𝖾", callback_data="circle_sticker")
+            InlineKeyboardButton(text="𝖢𝗂𝗋𝖼𝗅𝖾", callback_data="help")
             ],[
-            InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='photo')
+            InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start')
             ]]              
            await query.message.edit("**Select A Type**", reply_markup=InlineKeyboardMarkup(buttons))
