@@ -115,10 +115,10 @@ async def pm_text(bot, message):
 async def cb_handler(client: Client, query: CallbackQuery):
     if query.data == "file":
          buttons = [[
-            InlineKeyboardButton(text="👇🏻", callback_data="rmbgwhite"),
+            InlineKeyboardButton(text="👇🏻", callback_data="stats"),
             InlineKeyboardButton(text="👋🏻", callback_data="rmbgplain"),
             ],[
-            InlineKeyboardButton(text="❗️", callback_data="rmbgsticker"),
+            InlineKeyboardButton(text="❗️", callback_data="stats"),
             ],[
             InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start')
             ]]
@@ -147,7 +147,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
          await query.answer(MSG_ALRT)
     elif query.data == "helpp":
            buttons = [[
-            InlineKeyboardButton(text="🫂", callback_data="stkr"),
+            InlineKeyboardButton(text="🫂", callback_data="stats"),
             InlineKeyboardButton(text="😅", callback_data="cur_ved"),
             ],[                    
             InlineKeyboardButton(text="😌", callback_data="help")
