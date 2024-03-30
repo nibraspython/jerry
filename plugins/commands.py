@@ -1,6 +1,6 @@
 from Script import script
 from database.users_chats_db import db
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InputMediaPhoto
 from pyrogram import Client, filters, enums
 from info import PICS, LOG_CHANNEL, MSG_ALRT
 import os, random, asyncio
