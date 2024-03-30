@@ -1,4 +1,5 @@
 from Script import script
+from database.users_chats_db import db
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 from pyrogram import Client, filters, enums
 from info import PICS, LOG_CHANNEL, MSG_ALRT
@@ -144,5 +145,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start')
             ]]              
            await query.message.edit("**Select A Type**", reply_markup=InlineKeyboardMarkup(buttons))
-           await query.answer(MSG_ALRT) 
+           await query.answer(MSG_ALRT)
+    if not await db.get_chat(message.chat.id):
+            total=await client.get_chat_members_count(message.chat.id)
+            await client.send_message(LOG_CHANNEL, script.LOG_TEXT_G.format(message.chat.title, message.chat.id, total, "Unknown"))       
+            await db.add_chat(message.chat.id, message.chat.title)
+        return 
+    if not await db.is_user_exist(message.from_user.id):
+        await db.add_user(message.from_user.id, message.from_user.first_name)
+        await client.send_message(LOG_CHANNEL, script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
 
