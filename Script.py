@@ -18,7 +18,7 @@ I Cᴀɴ Pʀᴏᴠɪᴅᴇ Mᴏᴠɪᴇ Fᴏʀ Yᴏᴜ Jᴜsᴛ Aᴅᴅ Mᴇ Iɴ
 - ꜱᴏᴜʀᴄᴇ - <a href="https://t.me/xax_ha_ha_l">Pᴍ Mᴇ 📩</a>
 ⚙️ Dᴇᴠᴇʟᴏᴘᴇʀ:
 - <a href="https://t.me/xax_ha_ha_l">𝙾𝙶𝙶𝚈 𝚇 𝙹𝙴𝚁𝚁𝚈</a></b>"""
-    
+   
     HELPX_TXT = """Hai {},
 **There Is Nothing To Know More.**
 - Send Me The Limit Of Your Password and Keys (optional)
@@ -29,4 +29,12 @@ I Cᴀɴ Pʀᴏᴠɪᴅᴇ Mᴏᴠɪᴇ Fᴏʀ Yᴏᴜ Jᴜsᴛ Aᴅᴅ Mᴇ Iɴ
 **Note :-**
 • Only Digits Are Allowed
 • Maximum Allowed Digits Till 100 (I Can't Generate Passwords Above The Length 84)"""
-   
+
+    LOG_TEXT_G = """#NewGroup
+Gʀᴏᴜᴘ = {}(<code>{}</code>)
+Tᴏᴛᴀʟ Mᴇᴍʙᴇʀs = <code>{}</code>
+Aᴅᴅᴇᴅ Bʏ - {}"""
+
+    LOG_TEXT_P = """#NewUser
+ID - <code>{}</code>
+Nᴀᴍᴇ - {}"""
