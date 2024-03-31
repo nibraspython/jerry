@@ -1,5 +1,4 @@
 from Script import script
-from database.users_chats_db import db
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InputMediaPhoto
 from pyrogram import Client, filters, enums
 from info import PICS, LOG_CHANNEL, MSG_ALRT
@@ -144,7 +143,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton('🕸️ Hᴇʟᴩ', callback_data="file")
                   ]]
          await query.message.edit_text("**Select Required Mode**", reply_markup=InlineKeyboardMarkup(buttons))
-         await query.answer(MSG_ALRT)
     elif query.data == "helpp":
            buttons = [[
             InlineKeyboardButton(text="🫂", callback_data="stats"),
@@ -156,41 +154,3 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ]]              
            await query.message.edit("**Select A Type**", reply_markup=InlineKeyboardMarkup(buttons))
            await query.answer(MSG_ALRT)
-    elif query.data == "stats":
-        buttons = [[
-            InlineKeyboardButton('⟸ Bᴀᴄᴋ', callback_data='help'),
-            InlineKeyboardButton('⟲ Rᴇғʀᴇsʜ', callback_data='rfrsh')
-        ]]
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
-        reply_markup = InlineKeyboardMarkup(buttons)
-        #users and chats
-        users = await db.total_users_count()
-        chats = await db.total_chat_count()
-        await query.message.edit_text(
-            text=script.STATUS_TXT.format(users, chats),
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-    elif query.data == "rfrsh":
-        await query.answer("Fetching MongoDb DataBase")
-        buttons = [[
-            InlineKeyboardButton('⟸ Bᴀᴄᴋ', callback_data='help'),
-            InlineKeyboardButton('⟲ Rᴇғʀᴇsʜ', callback_data='rfrsh')
-        ]]
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
-        reply_markup = InlineKeyboardMarkup(buttons)
-        users = await db.total_users_count()
-        chats = await db.total_chat_count()
-        await query.message.edit_text(
-            text=script.STATUS_TXT.format(users, chats),
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        ) 
