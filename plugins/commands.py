@@ -1,10 +1,14 @@
 from Script import script
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InputMediaPhoto
 from pyrogram import Client, filters, enums
-from info import PICS, LOG_CHANNEL, MSG_ALRT
+from info import PICS, LOG_CHANNEL, MSG_ALRT, DATABASE_URI, DATABASE_NAME
 import os, random, asyncio
 import time
-from database.users_chats_db import db
+
+inclient = pymongo.MongoClient(DATABASE_URI)
+indb = inclient[DATABASE_NAME]
+users = indb['users']
+group = indb['group']
 
 CMD = ["/", "."]
 
@@ -15,15 +19,7 @@ async def ping(_, message):
     end_t = time.time()
     time_taken_s = (end_t - start_t) * 1000
     await rm.edit(f"𝖯𝗂𝗇𝗀!\n{time_taken_s:.3f} ms")
-    if not await db.get_chat(message.chat.id):
-            total=await client.get_chat_members_count(message.chat.id)
-            await client.send_message(LOG_CHANNEL, script.LOG_TEXT_G.format(message.chat.title, message.chat.id, total, "Unknown"))       
-            await db.add_chat(message.chat.id, message.chat.title)
-    return 
-    if not await db.is_user_exist(message.from_user.id):
-        await db.add_user(message.from_user.id, message.from_user.first_name)
-        await client.send_message(LOG_CHANNEL, script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
-
+    
 
 TEXT_TXT = """<b> Hᴇʟʟᴏ {}.
 
@@ -83,20 +79,62 @@ ABOUT = """--**About Me**--
 
 @Client.on_message(filters.command("start", CMD))
 async def start(_, message):
-        buttons = [[
-                    InlineKeyboardButton('⛦ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ⛦', url=f'http://t.me/oggyRbot?startgroup=true')
-                ],[
-                    InlineKeyboardButton('⚙️ ꜰᴜɴᴛɪᴏɴ ⚙️', callback_data="helpp"),
-                    InlineKeyboardButton('🧭 ᴀʙᴏᴜᴛ 🧭', callback_data="stick")
-                ],[
-                    InlineKeyboardButton('🕸️ Hᴇʟᴩ', callback_data="file")
-                  ]]
-        m = await message.reply_sticker("CAACAgIAAxkBAAIve2XgRl5w5qGTeAjktaUi00daPTyLAAIGMAACER1xSFRMh-rQSCkpNAQ") 
-        await asyncio.sleep(2)
-        await message.reply_photo(photo=random.choice(PICS), caption=script.ABOUT_TXT, reply_markup=InlineKeyboardMarkup(buttons), quote=True)
-        return await m.delete()
-        await query.answer(MSG_ALRT)
+    user = message.from_user.first_name
+    user_id = message.from_user.id
+    buttons = [[
+       InlineKeyboardButton('⛦ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ⛦', url=f'http://t.me/oggyRbot?startgroup=true')
+       ],[
+       InlineKeyboardButton('⚙️ ꜰᴜɴᴛɪᴏɴ ⚙️', callback_data="helpp"),
+       InlineKeyboardButton('🧭 ᴀʙᴏᴜᴛ 🧭', callback_data="stick")
+       ],[
+       InlineKeyboardButton('🕸️ Hᴇʟᴩ', callback_data="file")
+       ]]
+    m = await message.reply_sticker("CAACAgIAAxkBAAIve2XgRl5w5qGTeAjktaUi00daPTyLAAIGMAACER1xSFRMh-rQSCkpNAQ") 
+    await asyncio.sleep(2)
+    await message.reply_photo(photo=random.choice(PICS), caption=script.ABOUT_TXT, reply_markup=InlineKeyboardMarkup(buttons), quote=True)
+    return await m.delete()
+    await query.answer(MSG_ALRT)
+    progress_document = users.find_one({"_id": user_id})
+    if progress_document: 
+        return
+    else:
+        users.update_one(
+            {"_id": user_id},
+            {"$set": {"name": user}},
+            upsert=True
+        )
+        await bot.send_message(
+        chat_id=LOG_CHANNEL,
+        text=f"<b>#NEW_USER\n\nNᴀᴍᴇ : {user}\nID : {user_id}</b>"
+        )
 
+@Client.on_message(filters.command("stats", CMD))
+async def stats(_, message):
+    o = await message.reply("Loading...")
+    users = users.count_documents({})
+    group = group.count_documents({})
+    await o.edit(f"TOTAL USERS = {users} \n\nTOTAL GROUPS = {group}")
+    
+@Client.on_message(filters.new_chat_members & filters.me)
+async def new_group(bot, message):
+    name = message.chat.title
+    group_id = message.chat.id
+    progress_document = group.find_one({"_id": group_id})
+    if progress_document: 
+        return
+    else:
+        group.update_one(
+            {"_id": group_id},
+            {"$set": {"name": name}},
+            upsert=True
+        )
+        await bot.send_message(
+        chat_id=LOG_CHANNEL,
+        text=f"<b>#NEW_GROUP\n\nNᴀᴍᴇ : {name}\nID : {group_id}</b>"
+        )
+
+
+        
 @Client.on_message(filters.private & filters.text & filters.incoming)
 async def pm_text(bot, message):
     content = message.text
