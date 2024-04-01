@@ -4,6 +4,7 @@ from pyrogram import Client, filters, enums
 from info import PICS, LOG_CHANNEL, MSG_ALRT, DATABASE_URI, DATABASE_NAME
 import os, random, asyncio
 import time
+import pymongo
 
 inclient = pymongo.MongoClient(DATABASE_URI)
 indb = inclient[DATABASE_NAME]
