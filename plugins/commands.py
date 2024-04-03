@@ -8,8 +8,8 @@ import pymongo
 
 inclient = pymongo.MongoClient(DATABASE_URI)
 indb = inclient[DATABASE_NAME]
-users = indb['users']
-group = indb['group']
+users = indb.users
+group = indb.group
 
 CMD = ["/", "."]
 
