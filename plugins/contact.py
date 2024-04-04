@@ -9,8 +9,8 @@ from pyrogram.types import Message, CallbackQuery, InlineKeyboardButton, InlineK
 from name import pbot as Client
 
 #VARS
-support_chat_id =
-devs = []
+support_chat_id = "-1002010705088"
+devs = "7028695231"
 
 #CLIENT
 @Client.on_message(filters.private & filters.command(['cont', 'req', 'contact']))
