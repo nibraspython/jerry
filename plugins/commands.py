@@ -134,21 +134,6 @@ async def new_group(bot, message):
         text=f"<b>#NEW_GROUP\n\nNᴀᴍᴇ : {name}\nID : {group_id}</b>"
         )
 
-
-        
-@Client.on_message(filters.private & filters.text & filters.incoming)
-async def pm_text(bot, message):
-    content = message.text
-    user = message.from_user.first_name
-    user_id = message.from_user.id
-    if content.startswith("/") or content.startswith("#"): return  # ignore commands and hashtags
-    await message.reply_text(
-         text="<b>ʜᴇʏ ᴅᴜᴅᴇ 👋🏻 ,\n\nʏᴏᴜ ᴄᴀɴ'ᴛ ɢᴇᴛ any other messages ꜰʀᴏᴍ ʜᴇʀᴇ. ʀᴇǫᴜᴇsᴛ ᴏɴ ᴏᴜʀ <a href=https://t.me/xax_ha_ha_l>ʙᴏᴛ_ᴄʀᴇᴀᴛᴏʀ</a></b>",   
-         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("📝 ʀᴇǫᴜᴇsᴛ ʜᴇʀᴇ ", url=f"t.me/xax_ha_ha_l")]]),disable_web_page_preview=True)
-    await bot.send_message(
-        chat_id=LOG_CHANNEL,
-        text=f"<b>#𝐏𝐌_𝐌𝐒𝐆\n\nNᴀᴍᴇ : {user}\n\nID : {user_id}\n\nMᴇssᴀɢᴇ : {content}</b>"
-    )
 @Client.on_callback_query()
 async def cb_handler(client: Client, query: CallbackQuery):
     if query.data == "file":
