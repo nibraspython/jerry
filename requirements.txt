@@ -34,3 +34,4 @@ wheel
 ujson
 wget
 pytz
+aiofiles
