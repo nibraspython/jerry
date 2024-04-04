@@ -14,8 +14,13 @@ umongo==3.1.0
 
 
 #---ytdl----#
-youtube-search-python
-youtube-search
+ffmpeg
+aiofiles
+wget
+youtube_search
+youtube-search-python==1.4.6
+yt-dlp
+youtube-dl
 yt-dlp==2023.2.17
 
 #---imdb---#
