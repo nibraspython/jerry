@@ -173,7 +173,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
            
     elif query.data == "stick":
            buttons = [[
-            InlineKeyboardButton(text="👨🏼‍🦯", callback_data="stkr"),
+            InlineKeyboardButton(text="👨🏼‍🦯", callback_data="song"),
             InlineKeyboardButton(text="😳", callback_data="cur_ved"),
             ],[                    
             InlineKeyboardButton(text="👀", callback_data="help")
@@ -193,10 +193,15 @@ async def cb_handler(client: Client, query: CallbackQuery):
          await query.message.edit_text("**Select Required Mode**", reply_markup=InlineKeyboardMarkup(buttons))
     elif query.data == "helpp":
            buttons = [[
-            InlineKeyboardButton(text="🫂", callback_data="stats"),
-            InlineKeyboardButton(text="😅", callback_data="cur_ved"),
-            ],[                    
-            InlineKeyboardButton(text="😌", callback_data="help")
+            InlineKeyboardButton(text="ꜰᴜɴ", callback_data="stats"),
+            InlineKeyboardButton(text="ᴩɪɴ", callback_data="cur_ved"),
+            InlineKeyboardButton('ʀᴇᴩᴏʀᴛ', callback_data='start'),
+            InlineKeyboardButton('ᴩᴜʀɢᴇ', callback_data='start')
+            ],[
+            InlineKeyboardButton(text="ᴀɪ", callback_data="stats"),
+            InlineKeyboardButton(text="ᴛᴛꜱ", callback_data="cur_ved"),
+            InlineKeyboardButton('ʙᴀɴ', callback_data='start'),
+            InlineKeyboardButton(text="ᴇxᴛʀᴀ ᴍᴏᴅꜱ", callback_data="help")
             ],[
             InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start')
             ]]              
@@ -205,6 +210,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "song":
            mention = message.from_user.mention
            buttons = [[
+           InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start'), 
            InlineKeyboardButton('𝐉𝐨𝐢𝐧 𝐆𝐫𝐨𝐮𝐩', url=f'https://t.me/+8vZTQtzo0lBmNDY9')
            ]]
            reply_markup = InlineKeyboardMarkup(buttons)
