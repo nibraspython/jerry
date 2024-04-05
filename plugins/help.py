@@ -1,9 +1,5 @@
-from pyrogram import Client, filters 
-from pyrogram.types.bots_and_keyboards import callback_game
-from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeyboardButton
-from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup
-from info import help_message
-from typing import List, Any
+from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 HELPP_TEXT = """Yo, Komi here a telegram management bot written on pyrogram library 
 
@@ -22,15 +18,18 @@ def bothelp(_, message):
                                      callback_data=f"help:{x['Module_Name']}")
             ])
 
-        Client.send_message(message.chat.id,
-                         HELPP_TEXT,
-                         reply_markup=InlineKeyboardMarkup(keyboard))
+        message.reply_text(
+            HELPP_TEXT,
+            reply_markup=InlineKeyboardMarkup(keyboard)
+        )
 
     else:
-        Client.send_photo(chat_id=message.chat.id, photo="https://telegra.ph/file/769474503795f6d4f406c.jpg",
-                       caption=HELPP_TEXT,
-                       reply_markup=InlineKeyboardMarkup([[
-                           InlineKeyboardButton(
-                               "Pm me for more details",
-                               url="t.me/komisanrobot?start=help")
-                       ]]))
+        message.reply_photo(
+            photo="https://telegra.ph/file/769474503795f6d4f406c.jpg",
+            caption=HELPP_TEXT,
+            reply_markup=InlineKeyboardMarkup([[
+                InlineKeyboardButton(
+                    "Pm me for more details",
+                    url="t.me/komisanrobot?start=help")
+            ]])
+        )
