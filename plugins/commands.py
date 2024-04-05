@@ -194,7 +194,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 ],[
                     InlineKeyboardButton('🕸️ Hᴇʟᴩ', callback_data="file")
                   ]]
-         await query.message.edit_text(text=script.ABOUT_TXT, quote=True, reply_markup=InlineKeyboardMarkup(buttons))
+         await query.message.edit_text(text=script.ABOUT_TXT, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(buttons))
     elif query.data == "helpp":
            buttons = [[
             InlineKeyboardButton(text="ꜰᴜɴ", callback_data="stats"),
@@ -209,7 +209,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ],[
             InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start')
             ]]              
-           await query.message.edit(text=script.HELP_TXT, reply_markup=InlineKeyboardMarkup(buttons), quote=True)
+           await query.message.edit(text=script.HELP_TXT, reply_markup=InlineKeyboardMarkup(buttons), parse_mode=enums.ParseMode.HTML)
            await query.answer(MSG_ALRT)
     elif query.data == "msong":
            buttons = [[
