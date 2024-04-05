@@ -5,6 +5,7 @@ from info import PICS, LOG_CHANNEL, MSG_ALRT, DATABASE_URI, DATABASE_NAME
 import os, random, asyncio
 import time
 import pymongo
+from utils import temp
 
 inclient = pymongo.MongoClient(DATABASE_URI)
 indb = inclient[DATABASE_NAME]
@@ -116,7 +117,7 @@ async def start(_, message):
        ]]
     m = await message.reply_sticker("CAACAgIAAxkBAAIve2XgRl5w5qGTeAjktaUi00daPTyLAAIGMAACER1xSFRMh-rQSCkpNAQ") 
     await asyncio.sleep(2)
-    await message.reply_photo(photo=random.choice(PICS), caption=script.ABOUT_TXT.format(message.from_user.mention), reply_markup=InlineKeyboardMarkup(buttons), quote=True)
+    await message.reply_photo(photo=random.choice(PICS), caption=script.ABOUT_TXT.format(message.from_user.mention, temp.B_NAME), reply_markup=InlineKeyboardMarkup(buttons), quote=True)
     return await m.delete()
     await query.answer(MSG_ALRT)
     progress_document = users.find_one({"_id": user_id})
