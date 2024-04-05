@@ -12,7 +12,7 @@ import asyncio
 
 
 
-@Client.on_message(filters.command("ban"))
+@Client.on_message(filters.command("oban"))
 async def ban_user(_, message):
     is_admin = await admin_check(message)
     if not is_admin: return 
@@ -26,7 +26,7 @@ async def ban_user(_, message):
             await message.reply_text(f"Someone else is dusting off..! \n<a href='tg://user?id={user_id}'>{user_first_name}</a> Is forbidden")                      
             
 
-@Client.on_message(filters.command("tban"))
+@Client.on_message(filters.command("otban"))
 async def temp_ban_user(_, message):
     is_admin = await admin_check(message)
     if not is_admin: return
@@ -43,7 +43,7 @@ async def temp_ban_user(_, message):
             await message.reply_text(f"Someone else is dusting off..!\n<a href='tg://user?id={user_id}'>Lavane</a>\n banned for {message.command[1]}!")
                 
 
-@Client.on_message(filters.command(["unban", "unmute"]))
+@Client.on_message(filters.command(["ounban", "ounmute"]))
 async def un_ban_user(_, message):
     is_admin = await admin_check(message)
     if not is_admin: return
@@ -57,7 +57,7 @@ async def un_ban_user(_, message):
             await message.reply_text(f"Okay, changed ... now <a href='tg://user?id={user_id}'>{user_first_name}</a> To You can join the group!")           
             
 
-@Client.on_message(filters.command("mute"))
+@Client.on_message(filters.command("omute"))
 async def mute_user(_, message):
     is_admin = await admin_check(message)
     if not is_admin: return
@@ -71,7 +71,7 @@ async def mute_user(_, message):
             await message.reply_text(f"👍🏻 <a href='tg://user?id={user_id}'>Of lavender</a> The mouth is closed! 🤐")
 
 
-@Client.on_message(filters.command("tmute"))
+@Client.on_message(filters.command("otmute"))
 async def temp_mute_user(_, message):
     is_admin = await admin_check(message)
     if not is_admin: return
@@ -91,20 +91,20 @@ async def temp_mute_user(_, message):
             await message.reply_text(f"Be quiet for a while! 😠 <a href='tg://user?id={user_id}'>Of lavender</a>  Mouth  muted for {message.command[1]}!")                
 
 
-@Client.on_message(filters.command("pin") & filters.create(admin_filter))
+@Client.on_message(filters.command("opin") & filters.create(admin_filter))
 async def pin(_, message: Message):
     if not message.reply_to_message: return
     await message.reply_to_message.pin()
 
 
-@Client.on_message(filters.command("unpin") & filters.create(admin_filter))             
+@Client.on_message(filters.command("ounpin") & filters.create(admin_filter))             
 async def unpin(_, message: Message):
     if not message.reply_to_message: return
     await message.reply_to_message.unpin()
 
 
 
-@Client.on_message(filters.command("purge") & (filters.group | filters.channel))                   
+@Client.on_message(filters.command("opurge") & (filters.group | filters.channel))                   
 async def purge(client, message):
     if message.chat.type not in ((enums.ChatType.SUPERGROUP, enums.ChatType.CHANNEL)): return
     is_admin = await admin_check(message)
