@@ -7,7 +7,7 @@ I Cᴀɴ Pʀᴏᴠɪᴅᴇ Mᴏᴠɪᴇ Fᴏʀ Yᴏᴜ Jᴜsᴛ Aᴅᴅ Mᴇ Iɴ
     
     HELP_TXT = "Hᴇʏ {}\nHᴇʀᴇ Mꜱ Mʏ Hᴇʟᴩ"
 
-    ABOUT_TXT = """<b> Mʏ Nᴀhᴍᴇ: {}
+    ABOUT_TXT = """<b> Mʏ Nᴀᴍᴇ: {}
     
 👦🏼 Cʀᴇᴀᴛᴏʀ: <a href='https://t.me/xax_ha_ha_l'>𝙾𝙶𝙶𝚈 𝚇 𝙹𝙴𝚁𝚁𝚈</a>
 
