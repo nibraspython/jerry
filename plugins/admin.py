@@ -3,7 +3,7 @@ from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeybo
 from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup
 from pyrogram.types.messages_and_media import message
 from pyrogram import Client, filters, enums 
-from jerry.plugins.helpers import call_back_in_filter
+from plugins.helpers import call_back_in_filter
 from pyrogram.types import Message
 from info import help_message
 
