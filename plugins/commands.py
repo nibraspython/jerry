@@ -219,4 +219,4 @@ async def cb_handler(client: Client, query: CallbackQuery):
            InlineKeyboardButton('𝐉𝐨𝐢𝐧 𝐆𝐫𝐨𝐮𝐩', url=f'https://t.me/+8vZTQtzo0lBmNDY9')
            ]]
            reply_markup = InlineKeyboardMarkup(buttons)
-           await query.message.edit(text=START_MESSAGE, protect_content=True, reply_markup=reply_markup, parse_mode=enums.ParseMode.HTML)
+           await query.message.edit(text=START_MESSAGE, reply_markup=reply_markup, parse_mode=enums.ParseMode.HTML)
