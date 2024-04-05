@@ -3,8 +3,8 @@ from os import name
 from pyrogram.methods import messages
 from info import help_message
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from jerry.plugins.helptext import Help_Text
-from jerry.plugins.help import HELPP_TEXT
+from plugins.helptext import Help_Text
+from plugins.help import HELPP_TEXT
 
 fk = Help_Text()
 
