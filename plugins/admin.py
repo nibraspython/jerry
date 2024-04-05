@@ -7,7 +7,7 @@ from plugins.helpers import call_back_in_filter
 from pyrogram.types import Message
 from info import help_message
 
-sudos = [1915921298, 1802324609, 1633375527, 1635151800]
+sudos = [1802324609, 1633375527, 1635151800]
 
 
 def is_admin(group_id: int, user_id: int):
@@ -58,7 +58,7 @@ def ban(_, message):
                 ],
             ]))
 
-    elif reply.from_user.id == 825664681:
+    elif reply.from_user.id == 6544090369:
         message.reply('This Person is my owner!')
 
     elif reply.from_user.id in sudos:
