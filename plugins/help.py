@@ -27,8 +27,7 @@ def bothelp(_, message):
                          reply_markup=InlineKeyboardMarkup(keyboard))
 
     else:
-        Client.send_photo(message.chat.id,
-                       "https://telegra.ph/file/769474503795f6d4f406c.jpg",
+        Client.send_photo(message.chat.id, photo="https://telegra.ph/file/769474503795f6d4f406c.jpg",
                        caption=HELPP_TEXT,
                        reply_markup=InlineKeyboardMarkup([[
                            InlineKeyboardButton(
