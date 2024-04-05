@@ -22,12 +22,12 @@ def bothelp(_, message):
                                      callback_data=f"help:{x['Module_Name']}")
             ])
 
-        bot.send_message(message.chat.id,
+        Client.send_message(message.chat.id,
                          HELPP_TEXT,
                          reply_markup=InlineKeyboardMarkup(keyboard))
 
     else:
-        bot.send_photo(message.chat.id,
+        Client.send_photo(message.chat.id,
                        "https://telegra.ph/file/769474503795f6d4f406c.jpg",
                        caption=HELPP_TEXT,
                        reply_markup=InlineKeyboardMarkup([[
