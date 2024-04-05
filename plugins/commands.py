@@ -209,7 +209,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ],[
             InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start')
             ]]              
-           await query.message.edit(text=script.HELP_TXT, reply_markup=InlineKeyboardMarkup(buttons))
+           await query.message.edit(text=script.HELP_TXT, reply_markup=InlineKeyboardMarkup(buttons), quote=True)
            await query.answer(MSG_ALRT)
     elif query.data == "msong":
           buttons = [[
