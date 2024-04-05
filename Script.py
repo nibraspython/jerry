@@ -25,7 +25,7 @@ I ᴀᴍ ʜᴇʀᴇ ᴛᴏ ʜᴇʟᴘ ʏᴏᴜ ɢᴇᴛ ᴀʀᴏᴜɴᴅ ᴀɴ�
 **There Is Nothing To Know More.**
 - Send Me The Limit Of Your Password and Keys (optional)
   Like :-
-    `10 abcd1234`
+    `10 abcd12346`
     `10`
 - I Will Give The Password Of That Limit.
 **Note :-**
