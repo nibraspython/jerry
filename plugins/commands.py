@@ -22,6 +22,29 @@ async def ping(_, message):
     await rm.edit(f"𝖯𝗂𝗇𝗀!\n{time_taken_s:.3f} ms")
     
 
+START_MESSAGE = """
+𝐇𝐞𝐥𝐥𝐨 <a href='tg://settings'>𝐓𝐡𝐚𝐧𝐤 𝐘𝐨𝐮⚡️</a>
+
+𝐑𝐮𝐥𝐞𝐬 𝐀𝐧𝐝 𝐁𝐨𝐭 𝐂𝐨𝐦𝐦𝐚𝐧𝐝𝐬 <a href='http://telegra.ph/Minnal-murali-03-06-12'>𝐂𝐥𝐢𝐜𝐤⚡️</a>
+
+
+𝐅𝐨𝐫 𝐄𝐱𝐚𝐦𝐩𝐥𝐞 :-
+/ssong 𝐀𝐥𝐨𝐧𝐞✔️ =-= 𝐬𝐚𝐚𝐯𝐧 𝐦𝐩𝟑 𝐬𝐨𝐧𝐠
+/svideo 𝐀𝐥𝐨𝐧𝐞✔️ =-= 𝐬𝐚𝐚𝐯𝐧 𝐦𝐩𝟒 𝐬𝐨𝐧𝐠
+/ysong 𝐀𝐥𝐨𝐧𝐞✔️ =-= 𝐲𝐨𝐮𝐭𝐮𝐛𝐞 𝐦𝐩𝟑 𝐬𝐨𝐧𝐠
+/yvideo 𝐀𝐥𝐨𝐧𝐞✔️ =-= 𝐲𝐨𝐮𝐭𝐮𝐛𝐞 𝐦𝐩𝟒 𝐬𝐨𝐧𝐠
+
+/𝐬𝐚𝐚𝐯𝐧 𝐀𝐥𝐨𝐧𝐞 𝐄𝐧𝐠𝐥𝐢𝐬𝐡 ❌️
+/𝐯𝐦𝐩𝟒 𝐀𝐥𝐨𝐧𝐞 𝐔𝐧𝐝𝐨❌️
+/𝐲𝐬𝐨𝐧𝐠 𝐀𝐥𝐨𝐧𝐞 𝐒𝐨𝐧𝐠❌️
+/𝐲𝐯𝐢𝐝𝐞𝐨 𝐀𝐥𝐨𝐧𝐞 𝐍𝐞𝐰❌️
+
+𝐌𝐝𝐢𝐬𝐤 𝐋𝐢𝐧𝐤 𝐂𝐨𝐧𝐯𝐞𝐫𝐭𝐞𝐫
+𝐌𝐞𝐧𝐭𝐢𝐨𝐧 𝐀𝐧𝐝 𝐓𝐲𝐩𝐞 /𝐦 𝐂𝐨𝐦𝐦𝐚𝐧𝐝 𝐖𝐢𝐭𝐡 𝐘𝐨𝐮𝐫 𝐌𝐝𝐢𝐬𝐤 𝐋𝐢𝐧𝐤
+𝐎𝐰𝐧𝐞𝐫 𝐍𝐚𝐦𝐞 :- {}
+𝐆𝐫𝐨𝐮𝐩 𝐍𝐚𝐦𝐞 :- {}
+"""
+
 TEXT_TXT = """<b> Hᴇʟʟᴏ {}.
 
 Mʏ Nᴀᴍᴇ Is {}.
@@ -82,6 +105,7 @@ ABOUT = """--**About Me**--
 async def start(_, message):
     user = message.from_user.first_name
     user_id = message.from_user.id
+    mention = message.from_user.mention
     buttons = [[
        InlineKeyboardButton('⛦ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ⛦', url=f'http://t.me/oggyRbot?startgroup=true')
        ],[
@@ -92,7 +116,7 @@ async def start(_, message):
        ]]
     m = await message.reply_sticker("CAACAgIAAxkBAAIve2XgRl5w5qGTeAjktaUi00daPTyLAAIGMAACER1xSFRMh-rQSCkpNAQ") 
     await asyncio.sleep(2)
-    await message.reply_photo(photo=random.choice(PICS), caption=script.ABOUT_TXT, reply_markup=InlineKeyboardMarkup(buttons), quote=True)
+    await message.reply_photo(photo=random.choice(PICS), caption=script.ABOUT_TXT.format(message.from_user.mention), reply_markup=InlineKeyboardMarkup(buttons), quote=True)
     return await m.delete()
     await query.answer(MSG_ALRT)
     progress_document = users.find_one({"_id": user_id})
@@ -179,8 +203,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
            await query.message.edit("**Select A Type**", reply_markup=InlineKeyboardMarkup(buttons))
            await query.answer(MSG_ALRT)
     elif query.data == "song":
+           mention = message.from_user.mention
+           buttons = [[
+           InlineKeyboardButton('𝐉𝐨𝐢𝐧 𝐆𝐫𝐨𝐮𝐩', url=f'https://t.me/+8vZTQtzo0lBmNDY9')
+           ]]
+           reply_markup = InlineKeyboardMarkup(buttons)
            await message.reply_text(START_MESSAGE.format(message.from_user.mention, message.chat.title),
     protect_content=True,
     reply_markup=reply_markup, 
     parse_mode=enums.ParseMode.HTML
-                                   )
+    )
