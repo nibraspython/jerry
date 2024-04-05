@@ -1,5 +1,5 @@
 import motor.motor_asyncio
-from info import DATABASE_NAME, DATABASE_URL              
+from info import DATABASE_NAME, DATABASE_URI           
 
 class Database:
     
@@ -129,4 +129,4 @@ class Database:
         return (await self.db.command("dbstats"))['dataSize']
 
 
-db = Database(DATABASE_URL, DATABASE_NAME)
+db = Database(DATABASE_URI, DATABASE_NAME)
