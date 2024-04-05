@@ -73,7 +73,7 @@ def dkick(client, message):
     sent_message.delete()
     message.delete()
 
-@Client.on_message(filters.incoming & ~filters.private & filters.command('instatus') & filters.user(ADMINS))
+@Client.on_message(filters.incoming & ~filters.private & filters.command('instatuss') & filters.user(ADMINS))
 def instatus(client, message):
   user = client.get_chat_member(message.chat.id, message.from_user.id)
   if user.status in ('administrator', 'creator', 'ADMINS'):
