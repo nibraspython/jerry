@@ -4,7 +4,7 @@ from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeybo
 from pyrogram.types.messages_and_media import message
 from pyrogram import Client, filters, enums 
 from plugins.helpers import call_back_in_filter
-from pyrogram.types import Message
+from pyrogram.types import *
 from info import help_message
 
 sudos = [1802324609, 1633375527, 1635151800]
@@ -38,7 +38,7 @@ def admeme_callback(_, query):
 
 
 @Client.on_message(filters.command('ban'))
-def ban(_, message):
+def ban(_, message: Message):
     # scammer = reply.from_user.id
     reply = message.reply_to_message
     if is_admin(
@@ -100,7 +100,7 @@ def unban(_, message):
 
 
 @Client.on_message(filters.command('pin'))
-def pin(_, message):
+def pin(_, message: Message):
     if message.reply_to_message:
         message_id = message.reply_to_message.message_id
         if is_admin(message.chat.id, message.from_user.id):
