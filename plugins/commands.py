@@ -178,3 +178,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ]]              
            await query.message.edit("**Select A Type**", reply_markup=InlineKeyboardMarkup(buttons))
            await query.answer(MSG_ALRT)
+    elif query.data == "song":
+           await message.reply_text(START_MESSAGE.format(message.from_user.mention, message.chat.title),
+    protect_content=True,
+    reply_markup=reply_markup, 
+    parse_mode=enums.ParseMode.HTML
+                                   )
