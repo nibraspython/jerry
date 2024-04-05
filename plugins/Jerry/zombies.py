@@ -31,11 +31,11 @@ def inkick(client, message):
           except FloodWait as e:
             sleep(e.x)
       try:
-        sent_message.edit(Script.KICKED.format(count))
+        sent_message.edit(script.KICKED.format(count))
       except ChatWriteForbidden:
         pass
     else:
-      message.reply_text(Script.INPUT_REQUIRED)
+      message.reply_text(script.INPUT_REQUIRED)
   else:
     sent_message = message.reply_text(script.CREATOR_REQUIRED)
     sleep(5)
