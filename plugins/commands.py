@@ -12,6 +12,9 @@ indb = inclient[DATABASE_NAME]
 users = indb.users
 group = indb.group
 
+A = """{} with user id:- {} used /saavn command."""
+B = """{} with user id:- {} used /vsaavn command."""
+
 CMD = ["/", "."]
 
 @Client.on_message(filters.command("ping", CMD))
@@ -191,7 +194,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 ],[
                     InlineKeyboardButton('🕸️ Hᴇʟᴩ', callback_data="file")
                   ]]
-         await query.message.edit_text(text=script.ABOUT_TXT.format(message.from_user.mention), quote=True, reply_markup=InlineKeyboardMarkup(buttons))
+         await query.message.edit_text(text=script.ABOUT_TXT, quote=True, reply_markup=InlineKeyboardMarkup(buttons))
     elif query.data == "helpp":
            buttons = [[
             InlineKeyboardButton(text="ꜰᴜɴ", callback_data="stats"),
@@ -209,10 +212,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
            await query.message.edit(text=script.HELP_TXT, reply_markup=InlineKeyboardMarkup(buttons))
            await query.answer(MSG_ALRT)
     elif query.data == "msong":
-           mention = message.from_user.mention
-           buttons = [[
+          buttons = [[
            InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start'), 
            InlineKeyboardButton('𝐉𝐨𝐢𝐧 𝐆𝐫𝐨𝐮𝐩', url=f'https://t.me/+8vZTQtzo0lBmNDY9')
            ]]
            reply_markup = InlineKeyboardMarkup(buttons)
-           await query.message.edit(text=START_MESSAGE.format(message.from_user.mention, message.chat.title), protect_content=True, reply_markup=reply_markup, parse_mode=enums.ParseMode.HTML)
+           await query.message.edit(text=START_MESSAGE, protect_content=True, reply_markup=reply_markup, parse_mode=enums.ParseMode.HTML)
