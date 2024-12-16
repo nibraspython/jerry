@@ -7,7 +7,7 @@ from plugins.helpers import call_back_in_filter
 from pyrogram.types import *
 from info import help_message
 
-sudos = [1802324609, 1633375527, 1635151800]
+sudos = [1802324609, 7831423031, 1635151800]
 
 
 def is_admin(group_id: int, user_id: int):
