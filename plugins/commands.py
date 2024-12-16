@@ -115,7 +115,7 @@ async def start(_, message):
     buttons = [[
        InlineKeyboardButton('⛦ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ⛦', url=f'http://t.me/oggyRbot?startgroup=true')
        ],[
-       InlineKeyboardButton('⚙️ ꜰᴜɴᴛɪᴏɴ ⚙️', callback_data="helpp"),
+       InlineKeyboardButton('⚙️ ꜰᴜɴᴛɪᴏɴ s⚙️', callback_data="helpp"),
        InlineKeyboardButton('🧭 ᴀʙᴏᴜᴛ 🧭', callback_data="stick")
        ],[
        InlineKeyboardButton('🕸️ Hᴇʟᴩ', callback_data="file")
@@ -191,7 +191,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
          buttons = [[
                     InlineKeyboardButton('⛦ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ⛦', url=f'http://t.me/oggyRbot?startgroup=true')
                 ],[
-                    InlineKeyboardButton('⚙️ ꜰᴜɴᴛɪᴏɴ ⚙️', callback_data="helpp"),
+                    InlineKeyboardButton('⚙️ ꜰᴜɴᴛɪᴏɴ y⚙️', callback_data="helpp"),
                     InlineKeyboardButton('🧭 ᴀʙᴏᴜᴛ 🧭', callback_data="stick")
                 ],[
                     InlineKeyboardButton('🕸️ Hᴇʟᴩ', callback_data="file")
@@ -212,7 +212,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start')
             ]]              
            await query.message.edit(text=script.HELP_TXT, reply_markup=InlineKeyboardMarkup(buttons), parse_mode=enums.ParseMode.HTML)
-           await query.answer(MSG_ALRT)
     elif query.data == "msong":
            buttons = [[
            InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start'), 
