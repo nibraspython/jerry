@@ -219,11 +219,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
            ]]
            reply_markup = InlineKeyboardMarkup(buttons)
            await query.message.edit(text=START_MESSAGE, reply_markup=reply_markup, parse_mode=enums.ParseMode.HTML)
-     elif query.data == "nibras":
-           buttons = [[
-           InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start'), 
-           InlineKeyboardButton('𝐉𝐨𝐢𝐧 𝐆𝐫𝐨𝐮𝐩', url=f'https://t.me/+8vZTQtzo0lBmNDY9')
-           ]]
-           reply_markup = InlineKeyboardMarkup(buttons)
-           await query.message.edit(text=NIBRAS_TXT, reply_markup=reply_markup, parse_mode=enums.ParseMode.HTML)
+    elif query.data == "nibras":
+          buttons = [[
+          InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start'), 
+          InlineKeyboardButton('𝐉𝐨𝐢𝐧 𝐆𝐫𝐨𝐮𝐩', url=f'https://t.me/+8vZTQtzo0lBmNDY9')
+          ]]
+          reply_markup = InlineKeyboardMarkup(buttons)
+          await query.message.edit(text=NIBRAS_TXT, reply_markup=reply_markup, parse_mode=enums.ParseMode.HTML)
    
