@@ -1,16 +1,13 @@
-# Use an official Python runtime as the base image
-FROM python:3.8-slim
+FROM python:3.10
 
-# Set the working directory in the container
+RUN apt update && apt upgrade -y
+RUN apt install git -y
+COPY requirements.txt /requirements.txt
+
+RUN cd /
+RUN pip install -U pip && pip install -U -r requirements.txt       
 WORKDIR /app
 
-# Copy the requirements file into the container at /app
-COPY requirements.txt /app/
+COPY . .
 
-# Install any dependencies specified in requirements.txt
-RUN pip3 install -U pip && pip3 install -U -r requirements.txt
-# Copy the current directory contents into the container at /app
-COPY . /app/
-
-# Specify the command to run your bot.py script
-CMD ["python", "bot.py"]
+CMD ["python3", "bot.py"]
