@@ -97,7 +97,7 @@ HELP_BUTTON = InlineKeyboardMarkup(
     ]
 )
 
-ABOUT = """--**About Me**--
+NIBRAS_TXT = """--**About Me**--
 **🤖 Bot :** Password Generator Bot
 **🧑‍💻 Developer :** [M-fazin](https://github.com/M-fazin)
 **💻 Channel :** @EKBOTZ_UPDATE
@@ -115,7 +115,7 @@ async def start(_, message):
     buttons = [[
        InlineKeyboardButton('⛦ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ⛦', url=f'http://t.me/oggyRbot?startgroup=true')
        ],[
-       InlineKeyboardButton('⚙️ ꜰᴜɴᴛɪᴏɴ s⚙️', callback_data="helpp"),
+       InlineKeyboardButton('⚙️ ꜰᴜɴᴛɪᴏɴ s⚙️', callback_data="jack"),
        InlineKeyboardButton('🧭 ᴀʙᴏᴜᴛ 🧭', callback_data="stick")
        ],[
        InlineKeyboardButton('🕸️ Hᴇʟᴩ', callback_data="file")
@@ -171,7 +171,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton(text="👇🏻", callback_data="stats"),
             InlineKeyboardButton(text="👋🏻", callback_data="rmbgplain"),
             ],[
-            InlineKeyboardButton(text="❗️", callback_data="stats"),
+            InlineKeyboardButton(text="About", callback_data="nibras"),
             ],[
             InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start')
             ]]
@@ -191,13 +191,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
          buttons = [[
                     InlineKeyboardButton('⛦ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ⛦', url=f'http://t.me/oggyRbot?startgroup=true')
                 ],[
-                    InlineKeyboardButton('⚙️ ꜰᴜɴᴛɪᴏɴ y⚙️', callback_data="helpp"),
+                    InlineKeyboardButton('⚙️ ꜰᴜɴᴛɪᴏɴ y⚙️', callback_data="jack"),
                     InlineKeyboardButton('🧭 ᴀʙᴏᴜᴛ 🧭', callback_data="stick")
                 ],[
                     InlineKeyboardButton('🕸️ Hᴇʟᴩ', callback_data="file")
                   ]]
          await query.message.edit_text(text=script.ABOUT_TXT, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(buttons))
-    elif query.data == "helpp":
+    elif query.data == "jack":
            buttons = [[
             InlineKeyboardButton(text="ꜰᴜɴ", callback_data="stats"),
             InlineKeyboardButton(text="ᴩɪɴ", callback_data="cur_ved"),
@@ -219,3 +219,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
            ]]
            reply_markup = InlineKeyboardMarkup(buttons)
            await query.message.edit(text=START_MESSAGE, reply_markup=reply_markup, parse_mode=enums.ParseMode.HTML)
+     elif query.data == "nibras":
+           buttons = [[
+           InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start'), 
+           InlineKeyboardButton('𝐉𝐨𝐢𝐧 𝐆𝐫𝐨𝐮𝐩', url=f'https://t.me/+8vZTQtzo0lBmNDY9')
+           ]]
+           reply_markup = InlineKeyboardMarkup(buttons)
+           await query.message.edit(text=NIBRAS_TXT, reply_markup=reply_markup, parse_mode=enums.ParseMode.HTML)
+   
