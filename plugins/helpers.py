@@ -4,10 +4,14 @@ from pyrogram.methods import messages
 from info import help_message
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from plugins.helptext import Help_Text
-from plugins.help import HELPP_TEXT
 
 fk = Help_Text()
 
+HELPP_TEXT = """Yo, Komi here a telegram management bot written on pyrogram library 
+
+Check the following buttons for more info 
+
+Report bugs at - @komisan_support"""
 
 def call_back_in_filter(data):
     return filters.create(lambda flt, _, query: flt.data in query.data,
