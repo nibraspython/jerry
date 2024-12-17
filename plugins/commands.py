@@ -39,6 +39,12 @@ START_MESSAGE = """
 /svideo 𝐀𝐥𝐨𝐧𝐞✔️ =-= 𝐬𝐚𝐚𝐯𝐧 𝐦𝐩𝟒 𝐬𝐨𝐧𝐠
 /ysong 𝐀𝐥𝐨𝐧𝐞✔️ =-= 𝐲𝐨𝐮𝐭𝐮𝐛𝐞 𝐦𝐩𝟑 𝐬𝐨𝐧𝐠
 /yvideo 𝐀𝐥𝐨𝐧𝐞✔️ =-= 𝐲𝐨𝐮𝐭𝐮𝐛𝐞 𝐦𝐩𝟒 𝐬𝐨𝐧𝐠
+/Carbon
+/paste
+/carbon
+/share
+/json
+/repo
 
 /𝐬𝐚𝐚𝐯𝐧 𝐀𝐥𝐨𝐧𝐞 𝐄𝐧𝐠𝐥𝐢𝐬𝐡 ❌️
 /𝐯𝐦𝐩𝟒 𝐀𝐥𝐨𝐧𝐞 𝐔𝐧𝐝𝐨❌️
@@ -138,6 +144,11 @@ async def start(_, message):
         chat_id=LOG_CHANNEL,
         text=f"<b>#NEW_USER\n\nNᴀᴍᴇ : {user}\nID : {user_id}</b>"
         )
+        
+@Client.on_message(filters.command("opin"))
+async def pin(_, message: Message):
+    if not message.reply_to_message: return
+    await message.reply_to_message.pin()
 
 @Client.on_message(filters.command("stats", CMD))
 async def stats(_, message):
@@ -168,8 +179,8 @@ async def new_group(bot, message):
 async def cb_handler(client: Client, query: CallbackQuery):
     if query.data == "file":
          buttons = [[
-            InlineKeyboardButton(text="👇🏻", callback_data="stats"),
-            InlineKeyboardButton(text="👋🏻", callback_data="rmbgplain"),
+            InlineKeyboardButton(text="Carbon", callback_data="stats"),
+            InlineKeyboardButton(text="Share", callback_data="rmbgplain"),
             ],[
             InlineKeyboardButton(text="About", callback_data="nibras"),
             ],[
@@ -179,10 +190,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
            
     elif query.data == "stick":
            buttons = [[
-            InlineKeyboardButton(text="👨🏼‍🦯", callback_data="msong"),
-            InlineKeyboardButton(text="😳", callback_data="cur_ved"),
+            InlineKeyboardButton(text="SongAi", callback_data="msong"),
+            InlineKeyboardButton(text="Paste", callback_data="cur_ved"),
             ],[                    
-            InlineKeyboardButton(text="👀", callback_data="help")
+            InlineKeyboardButton(text="Json", callback_data="help")
             ],[
             InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start')
             ]]              
