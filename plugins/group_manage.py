@@ -91,7 +91,7 @@ async def temp_mute_user(_, message):
             await message.reply_text(f"Be quiet for a while! 😠 <a href='tg://user?id={user_id}'>Of lavender</a>  Mouth  muted for {message.command[1]}!")                
 
 
-@Client.on_message(filters.command("opin") & filters.create(admin_filter))
+@Client.on_message(filters.command("opin"))
 async def pin(_, message: Message):
     if not message.reply_to_message: return
     await message.reply_to_message.pin()
