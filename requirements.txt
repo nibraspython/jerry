@@ -34,3 +34,10 @@ wheel
 ujson
 wget
 pytz
+youtube-dl
+ffmpeg
+wget
+wheel
+ujson
+wget
+pytz
