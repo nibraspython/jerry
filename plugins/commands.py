@@ -27,6 +27,9 @@ async def ping(_, message):
     time_taken_s = (end_t - start_t) * 1000
     await rm.edit(f"𝖯𝗂𝗇𝗀!\n{time_taken_s:.3f} ms")
     
+CARBON_TXT = """**Hai {}, Here You Can Generate Carbon Image. Just Reply a Name /carbon**"""
+
+SHARE_TXT = """**Hai {}, Here You Can Generate ShareText. Just Reply a Name /share**"""
 
 START_MESSAGE = """
 𝐇𝐞𝐥𝐥𝐨 <a href='tg://settings'>𝐓𝐡𝐚𝐧𝐤 𝐘𝐨𝐮⚡️</a>
@@ -179,8 +182,8 @@ async def new_group(bot, message):
 async def cb_handler(client: Client, query: CallbackQuery):
     if query.data == "file":
          buttons = [[
-            InlineKeyboardButton(text="Carbon", callback_data="stats"),
-            InlineKeyboardButton(text="Share", callback_data="rmbgplain"),
+            InlineKeyboardButton(text="Carbon", callback_data="carb"),
+            InlineKeyboardButton(text="Share", callback_data="shar"),
             ],[
             InlineKeyboardButton(text="About", callback_data="nibras"),
             ],[
@@ -226,15 +229,21 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "msong":
            buttons = [[
            InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start'), 
-           InlineKeyboardButton('𝐉𝐨𝐢𝐧 𝐆𝐫𝐨𝐮𝐩', url=f'https://t.me/+8vZTQtzo0lBmNDY9')
+           InlineKeyboardButton('𝐉𝐨𝐢𝐧 𝐆𝐫𝐨𝐮𝐩', url=f'https://t.me/nibrashacked')
            ]]
            reply_markup = InlineKeyboardMarkup(buttons)
            await query.message.edit(text=START_MESSAGE, reply_markup=reply_markup, parse_mode=enums.ParseMode.HTML)
-    elif query.data == "nibras":
-          buttons = [[
-          InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start'), 
-          InlineKeyboardButton('𝐉𝐨𝐢𝐧 𝐆𝐫𝐨𝐮𝐩', url=f'https://t.me/+8vZTQtzo0lBmNDY9')
-          ]]
-          reply_markup = InlineKeyboardMarkup(buttons)
-          await query.message.edit(text=NIBRAS_TXT, reply_markup=reply_markup, parse_mode=enums.ParseMode.HTML)
-   
+    elif query.data == "shar":
+           buttons = [[
+           InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='jack'), 
+           InlineKeyboardButton('𝐉𝐨𝐢𝐧 𝐆𝐫𝐨𝐮𝐩', url=f'https://t.me/nibrashacked')
+           ]]
+           reply_markup = InlineKeyboardMarkup(buttons)
+           await query.message.edit(text=SHARE_TXT, reply_markup=reply_markup, parse_mode=enums.ParseMode.HTML)
+    elif query.data == "carb":
+           buttons = [[
+           InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='jack'), 
+           InlineKeyboardButton('𝐉𝐨𝐢𝐧 𝐆𝐫𝐨𝐮𝐩', url=f'https://t.me/nibrashacked')
+           ]]
+           reply_markup = InlineKeyboardMarkup(buttons)
+           await query.message.edit(text=CARBON_TXT, reply_markup=reply_markup, parse_mode=enums.ParseMode.HTML)
