@@ -41,3 +41,4 @@ wheel
 ujson
 wget
 pytz
+openai
