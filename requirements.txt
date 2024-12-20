@@ -16,7 +16,7 @@ motor
 #---ytdl----#
 youtube-search-python
 youtube-search
-yt-dlp==2023.2.17
+yt-dlp==2024.12.13
 
 #---imdb---#
 cinemagoer==2023.5.1
