@@ -42,3 +42,4 @@ ujson
 wget
 pytz
 openai
+pyrogram
