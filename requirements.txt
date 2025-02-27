@@ -20,7 +20,7 @@ motor
 #---ytdl----#
 youtube-search-python
 youtube-search
-
+yt_search
 #---imdb---#
 cinemagoer==2023.5.1
 
