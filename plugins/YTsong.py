@@ -26,7 +26,13 @@ async def song(client, message):
         await message.reply_text("Please provide a search query or YouTube URL.")
         return
 
-    response = requests.get(f"https://www.youtube.com/results?search_query={query}")
+    try:
+        response = requests.get(f"https://www.youtube.com/results?search_query={query}")
+        response.raise_for_status()  # Check if request was successful
+    except requests.exceptions.RequestException:
+        await message.reply_text("Failed to fetch YouTube results.")
+        return
+
     if 'watch?v=' not in response.text:
         await message.reply_text("No results found.")
         return
@@ -44,8 +50,14 @@ async def video(client, message):
         await message.reply_text("Please provide a search query or YouTube URL.")
         return
 
-    response = requests.get(YTMP4_API + query)
-    data = response.json().get("data", {})
+    try:
+        response = requests.get(YTMP4_API + query)
+        response.raise_for_status()
+        data = response.json().get("data", {})
+    except requests.exceptions.RequestException:
+        await message.reply_text("Failed to fetch video data.")
+        return
+
     if not data:
         await message.reply_text("Failed to download the video.")
         return
@@ -71,8 +83,14 @@ async def ytv(client, message):
         await message.reply_text("Please provide a YouTube URL.")
         return
 
-    response = requests.get(YTMP4_API + query)
-    data = response.json().get("data", {})
+    try:
+        response = requests.get(YTMP4_API + query)
+        response.raise_for_status()
+        data = response.json().get("data", {})
+    except requests.exceptions.RequestException:
+        await message.reply_text("Failed to fetch video data.")
+        return
+
     if not data:
         await message.reply_text("Failed to download the video.")
         return
@@ -87,7 +105,13 @@ async def yts(client, message):
         await message.reply_text("Please provide a search query.")
         return
 
-    response = requests.get(f"https://www.youtube.com/results?search_query={query}")
+    try:
+        response = requests.get(f"https://www.youtube.com/results?search_query={query}")
+        response.raise_for_status()
+    except requests.exceptions.RequestException:
+        await message.reply_text("Failed to fetch search results.")
+        return
+
     if 'watch?v=' not in response.text:
         await message.reply_text("No results found.")
         return
