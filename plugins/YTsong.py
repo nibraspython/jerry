@@ -81,19 +81,3 @@ async def ytv(client, message):
     
     await message.reply_text(f"Downloading {data['title']}...")
     await client.send_video(message.chat.id, video=data['dl'], caption=data['title'])
-
-@Client.on_message(filters.command("jook"))
-async def yts(client, message):
-    query = message.text.split(" ", 1)[1] if len(message.text.split()) > 1 else None
-    if not query:
-        await message.reply_text("Please provide a search query.")
-        return
-    
-    response = requests.get(f"https://www.youtube.com/results?search_query={query}")
-    if 'watch?v=' not in response.text:
-        await message.reply_text("No results found.")
-        return
-    
-    results = [f"https://www.youtube.com/watch?v={vid.split('\"')[0]}" for vid in response.text.split('watch?v=')[1:10]]
-    search_results = "\n".join([f"{i+1}. {vid}" for i, vid in enumerate(results)])
-    await message.reply_text(f"Top 10 YouTube search results:\n\n{search_results}")
