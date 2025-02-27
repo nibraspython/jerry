@@ -31,13 +31,15 @@ async def song(client, message):
         await message.reply_text("No results found.")
         return
     
-    video_url = f"https://www.youtube.com/watch?v={response.text.split('watch?v=')[1].split('"')[0]}"
+    video_id = response.text.split('watch?v=')[1].split('"')[0]  # Fixed syntax error
+    video_url = f"https://www.youtube.com/watch?v={video_id}"
+    
     title, audio_path = download_audio(video_url)
     
     await message.reply_text(f"Downloading {title}...")
     await client.send_audio(message.chat.id, audio=audio_path, title=title)
 
-@app.on_message(filters.command("video"))
+@Client.on_message(filters.command("video"))
 async def video(client, message):
     query = message.text.split(" ", 1)[1] if len(message.text.split()) > 1 else None
     if not query:
@@ -64,7 +66,7 @@ async def yta(client, message):
     await message.reply_text(f"Downloading {title}...")
     await client.send_audio(message.chat.id, audio=audio_path, title=title)
 
-@app.on_message(filters.command("ytv"))
+@Client.on_message(filters.command("ytv"))
 async def ytv(client, message):
     query = message.text.split(" ", 1)[1] if len(message.text.split()) > 1 else None
     if not query:
@@ -92,6 +94,6 @@ async def yts(client, message):
         await message.reply_text("No results found.")
         return
     
-    results = [f"https://www.youtube.com/watch?v={vid.split('"')[0]}" for vid in response.text.split('watch?v=')[1:10]]
+    results = [f"https://www.youtube.com/watch?v={vid.split('\"')[0]}" for vid in response.text.split('watch?v=')[1:10]]
     search_results = "\n".join([f"{i+1}. {vid}" for i, vid in enumerate(results)])
     await message.reply_text(f"Top 10 YouTube search results:\n\n{search_results}")
