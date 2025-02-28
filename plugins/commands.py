@@ -200,7 +200,7 @@ async def new_group(bot, message):
         )
 
 @Client.on_callback_query()
-async def cb_handler(client: Client, query: CallbackQuery):
+async def cb_handler(client: Client, query: CallbackQuery, message):
     if query.data == "file":
          buttons = [[
             InlineKeyboardButton(text="Carbon", callback_data="carb"),
@@ -221,7 +221,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ],[
             InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start')
             ]]              
-           await query.message.edit(text=script.NIBRAS_TXT, disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(buttons), quote=True)
+           await query.message.edit(text=script.NIBRAS_TXT, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(buttons))
     if query.data == "start":
          user = message.from_user.first_name
          user_id = message.from_user.id
@@ -234,7 +234,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 ],[
                     InlineKeyboardButton('🕸️ Hᴇʟᴩ', callback_data="file")
                   ]]
-         await query.message.edit_text(text=script.ABOUT_TXT.format(message.from_user.mention, temp.B_NAME), reply_markup=InlineKeyboardMarkup(buttons), quote=True)
+         await query.message.edit_text(text=script.ABOUT_TXT.format(message.from_user.mention, temp.B_NAME), parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(buttons))
     elif query.data == "jack":
            buttons = [[
             InlineKeyboardButton(text="ꜰᴜɴ", callback_data="stats"),
