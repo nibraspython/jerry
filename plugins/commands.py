@@ -106,15 +106,6 @@ HELP_BUTTON = InlineKeyboardMarkup(
     ]
 )
 
-NIBRAS_TXT = """--**About Me**--
-**🤖 Bot :** Password Generator Bot
-**🧑‍💻 Developer :** [M-fazin](https://github.com/M-fazin)
-**💻 Channel :** @EKBOTZ_UPDATE
-**☎️ Support :** @ekbotz_support
-**🗂️ Source Code :** [Password Generator Bot](https://github.com/M-fazin/Password-Generator-Bot)
-**⚙️ Language :** Python 3
-**🛡️ Framework :** Pyrogram"""
-
 
 @Client.on_message(filters.command("start", CMD))
 async def start(_, message):
@@ -125,7 +116,7 @@ async def start(_, message):
        InlineKeyboardButton('⛦ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ⛦', url=f'http://t.me/manikanddanbot?startgroup=true')
        ],[
        InlineKeyboardButton('⚙️ ꜰᴜɴᴛɪᴏɴ s⚙️', callback_data="jack"),
-       InlineKeyboardButton('🧭 ᴀʙᴏᴜᴛ 🧭', callback_data="")
+       InlineKeyboardButton('🧭 ᴀʙᴏᴜᴛ 🧭', callback_data="stick")
        ],[
        InlineKeyboardButton('🕸️ Hᴇʟᴩ', callback_data="file")
        ]]
@@ -155,7 +146,7 @@ async def pin(_, message: Message):
 
 @Client.on_message(filters.command("stats", CMD))
 async def stats(client, message):
-    from config import db  # Ensure db is imported properly
+    from info import db  # Ensure db is imported properly
 
     try:
         users = db["users"]  # Access the users collection
@@ -223,7 +214,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('ʀᴇᴩᴏʀᴛ', callback_data='start'),
             InlineKeyboardButton('ᴩᴜʀɢᴇ', callback_data='start')
             ],[
-            InlineKeyboardButton(text="ᴀɪ 🤦🏼‍♂️", callback_data="msong"),
+            InlineKeyboardButton(text="ᴀɪ 🤦🏼‍♂️", callback_data="ping"),
             InlineKeyboardButton(text="ᴛᴛꜱ", callback_data="cur_ved"),
             InlineKeyboardButton('ʙᴀɴ', callback_data='start'),
             InlineKeyboardButton(text="ᴇxᴛʀᴀ ᴍᴏᴅꜱ", callback_data="help")
@@ -233,21 +224,21 @@ async def cb_handler(client: Client, query: CallbackQuery):
            await query.message.edit(text=script.HELP_TXT, reply_markup=InlineKeyboardMarkup(buttons), parse_mode=enums.ParseMode.HTML)
     elif query.data == "msong":
            buttons = [[
-           InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start'), 
+           InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='file'), 
            InlineKeyboardButton('𝐉𝐨𝐢𝐧 𝐆𝐫𝐨𝐮𝐩', url=f'https://t.me/nibrashacked')
            ]]
            reply_markup = InlineKeyboardMarkup(buttons)
            await query.message.edit(text=START_MESSAGE, reply_markup=reply_markup, parse_mode=enums.ParseMode.HTML)
     elif query.data == "shar":
            buttons = [[
-           InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='jack'), 
+           InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='file'), 
            InlineKeyboardButton('𝐉𝐨𝐢𝐧 𝐆𝐫𝐨𝐮𝐩', url=f'https://t.me/nibrashacked')
            ]]
            reply_markup = InlineKeyboardMarkup(buttons)
            await query.message.edit(text=SHARE_TXT, reply_markup=reply_markup, parse_mode=enums.ParseMode.HTML)
     elif query.data == "carb":
            buttons = [[
-           InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='jack'), 
+           InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='file'), 
            InlineKeyboardButton('𝐉𝐨𝐢𝐧 𝐆𝐫𝐨𝐮𝐩', url=f'https://t.me/nibrashacked')
            ]]
            reply_markup = InlineKeyboardMarkup(buttons)
