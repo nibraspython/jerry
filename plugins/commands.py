@@ -4,7 +4,7 @@ from pyrogram import Client, filters, enums
 from info import PICS, LOG_CHANNEL, MSG_ALRT, DATABASE_URI, DATABASE_NAME
 import os, random, asyncio
 import time
-import pymongos
+import pymongo
 import requests
 from telegraph import upload_file
 from utils import temp
