@@ -4,7 +4,9 @@ from pyrogram import Client, filters, enums
 from info import PICS, LOG_CHANNEL, MSG_ALRT, DATABASE_URI, DATABASE_NAME
 import os, random, asyncio
 import time
-import pymongo
+import pymongos
+import requests
+from telegraph import upload_file
 from utils import temp
 
 #hii 
@@ -143,6 +145,29 @@ async def start(_, message):
 async def pin(_, message: Message):
     if not message.reply_to_message: return
     await message.reply_to_message.pin()
+
+@Client.on_message(filters.command("uss", CMD) & filters.reply)
+async def upload_to_catbox(client, message):
+    if not message.reply_to_message or not message.reply_to_message.media:
+        await message.reply("Reply to an image, video, or audio file.")
+        return
+
+    try:
+        file_path = await message.reply_to_message.download()
+        file_type = message.reply_to_message.document.mime_type if message.reply_to_message.document else None
+        filename = "upload.mp4" if "video" in file_type else "upload.png" if "image" in file_type else "upload.mp3"
+        
+        with open(file_path, "rb") as file:
+            response = requests.post("https://catbox.moe/user/api.php",
+                                     files={"fileToUpload": (filename, file)},
+                                     data={"reqtype": "fileupload"})
+        
+        os.remove(file_path)
+        file_url = response.text.strip()
+        await message.reply(file_url)
+    
+    except Exception as e:
+        await message.reply(f"Error: {str(e)}")
 
 @Client.on_message(filters.command("stats", CMD))
 async def stats(client, message):
