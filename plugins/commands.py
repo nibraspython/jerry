@@ -122,10 +122,10 @@ async def start(_, message):
     user_id = message.from_user.id
     mention = message.from_user.mention
     buttons = [[
-       InlineKeyboardButton('⛦ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ⛦', url=f'http://t.me/oggyRbot?startgroup=true')
+       InlineKeyboardButton('⛦ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ⛦', url=f'http://t.me/manikanddanbot?startgroup=true')
        ],[
        InlineKeyboardButton('⚙️ ꜰᴜɴᴛɪᴏɴ s⚙️', callback_data="jack"),
-       InlineKeyboardButton('🧭 ᴀʙᴏᴜᴛ 🧭', callback_data="stick")
+       InlineKeyboardButton('🧭 ᴀʙᴏᴜᴛ 🧭', callback_data="")
        ],[
        InlineKeyboardButton('🕸️ Hᴇʟᴩ', callback_data="file")
        ]]
@@ -154,11 +154,16 @@ async def pin(_, message: Message):
     await message.reply_to_message.pin()
 
 @Client.on_message(filters.command("stats", CMD))
-async def stats(_, message):
-    o = await message.reply("Loading...")
-    users = users.count_documents({})
-    group = group.count_documents({})
-    await o.edit(f"TOTAL USERS = {users} \n\nTOTAL GROUPS = {group}")
+async def stats(client, message):
+    from config import db  # Ensure db is imported properly
+
+    try:
+        users = db["users"]  # Access the users collection
+        user_count = users.count_documents({})  # Count total users
+        await message.reply_text(f"Total Users: {user_count}")
+    except Exception as e:
+        await message.reply_text(f"Error: {e}")  # Send error message to user
+
     
 @Client.on_message(filters.new_chat_members & filters.me)
 async def new_group(bot, message):
@@ -200,7 +205,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ],[
             InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start')
             ]]              
-           await query.message.edit("**Select A Type**", reply_markup=InlineKeyboardMarkup(buttons))
+           await query.message.edit(text=NIBRAS_TXT, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(buttons))
     if query.data == "start":
          buttons = [[
                     InlineKeyboardButton('⛦ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ⛦', url=f'http://t.me/oggyRbot?startgroup=true')
