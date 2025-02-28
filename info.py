@@ -2,7 +2,9 @@ import re
 from os import environ
 from pymongo import MongoClient
 
-DB_URI = "mongodb+srv://oggytgbot:oggytgbot@cluster0.bzdravq.mongodb.net/?retryWrites=true&w=majority"  # Replace with your DB URI
+DB_URI = "mongodb+srv://oggytgbot:oggytgbot@cluster0.bzdravq.mongodb.net/?retryWrites=true&w=majority"
+client = MongoClient(DB_URI)
+db = client["oggytgbot"]
 
 help_message = []
 
