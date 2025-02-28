@@ -200,7 +200,7 @@ async def new_group(bot, message):
         )
 
 @Client.on_callback_query()
-async def cb_handler(client: Client, query: CallbackQuery, message):
+async def cb_handler(client: Client, query: CallbackQuery):
     if query.data == "file":
          buttons = [[
             InlineKeyboardButton(text="Carbon", callback_data="carb"),
@@ -223,9 +223,6 @@ async def cb_handler(client: Client, query: CallbackQuery, message):
             ]]              
            await query.message.edit(text=script.NIBRAS_TXT, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(buttons))
     if query.data == "start":
-         user = message.from_user.first_name
-         user_id = message.from_user.id
-         mention = message.from_user.mention
          buttons = [[
                     InlineKeyboardButton('⛦ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ⛦', url=f'http://t.me/oggyRbot?startgroup=true')
                 ],[
@@ -234,7 +231,7 @@ async def cb_handler(client: Client, query: CallbackQuery, message):
                 ],[
                     InlineKeyboardButton('🕸️ Hᴇʟᴩ', callback_data="file")
                   ]]
-         await query.message.edit_text(text=script.ABOUT_TXT.format(message.from_user.mention, temp.B_NAME), parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(buttons))
+         await query.message.edit_text(text=script.ABOUT_TXT, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(buttons))
     elif query.data == "jack":
            buttons = [[
             InlineKeyboardButton(text="ꜰᴜɴ", callback_data="stats"),
