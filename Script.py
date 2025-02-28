@@ -9,6 +9,15 @@ I Cᴀɴ Pʀᴏᴠɪᴅᴇ Mᴏᴠɪᴇ Fᴏʀ Yᴏᴜ Jᴜsᴛ Aᴅᴅ Mᴇ Iɴ
     
 I ᴀᴍ ʜᴇʀᴇ ᴛᴏ ʜᴇʟᴘ ʏᴏᴜ ɢᴇᴛ ᴀʀᴏᴜɴᴅ ᴀɴᴅ ᴋᴇᴇᴘ ᴛʜᴇ ᴏʀᴅᴇʀ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘꜱ!</code>"""
 
+    NIBRAS_TXT = """--**About Me**--
+**🤖 Bot :** Password Generator Bot
+**🧑‍💻 Developer :** [M-fazin](https://github.com/M-fazin)
+**💻 Channel :** @EKBOTZ_UPDATE
+**☎️ Support :** @ekbotz_support
+**🗂️ Source Code :** [Password Generator Bot](https://github.com/M-fazin/Password-Generator-Bot)
+**⚙️ Language :** Python 3
+**🛡️ Framework :** Pyrogram"""
+
     ABOUT_TXT = """<b> Mʏ Nᴀᴍᴇ: {}
     
 👦🏼 Cʀᴇᴀᴛᴏʀ: <a href='https://t.me/xax_ha_ha_l'>𝙾𝙶𝙶𝚈 𝚇 𝙹𝙴𝚁𝚁𝚈</a>
