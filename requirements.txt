@@ -17,6 +17,7 @@ marshmallow
 umongo
 motor
 gTTS==2.5.0
+telegraph==2.2.0
 
 #---ytdl----#
 youtube-search-python
