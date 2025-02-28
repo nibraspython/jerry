@@ -16,6 +16,7 @@ dnspython
 marshmallow
 umongo
 motor
+gTTS==2.5.0
 
 #---ytdl----#
 youtube-search-python
