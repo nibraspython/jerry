@@ -1,5 +1,8 @@
 import re
 from os import environ
+from pymongo import MongoClient
+
+DB_URI = "mongodb+srv://oggytgbot:oggytgbot@cluster0.bzdravq.mongodb.net/?retryWrites=true&w=majority"  # Replace with your DB URI
 
 help_message = []
 
