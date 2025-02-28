@@ -196,7 +196,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ],[
             InlineKeyboardButton('𝙱𝙰𝙲𝙺', callback_data='start')
             ]]              
-           await query.message.edit(text=NIBRAS_TXT, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(buttons))
+           await query.message.editt(text=script.NIBRAS_TXT, disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(buttons), quote=True)
     if query.data == "start":
          buttons = [[
                     InlineKeyboardButton('⛦ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ⛦', url=f'http://t.me/oggyRbot?startgroup=true')
